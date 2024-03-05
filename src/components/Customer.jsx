@@ -1,9 +1,10 @@
 
-const Customer = () => {
+const Customer = ({user}) => {
+
     return (
         <>
         <div>
-            <h1>tushar</h1>
+            <h1>{user.name}</h1>
         </div>
         </>
     )
