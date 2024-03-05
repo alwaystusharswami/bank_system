@@ -1,11 +1,11 @@
-import { Customer } from "../components"
+import { CustomerList } from "../components";
 
 const Home = () => {
-    return (
-        <div>
-            <Customer/>
-        </div>
-    )
-}
+  return (
+    <div>
+      <CustomerList />
+    </div>
+  );
+};
 
-export default Home
+export default Home;

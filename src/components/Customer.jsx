@@ -3,7 +3,7 @@ const Customer = () => {
     return (
         <>
         <div>
-            <h1>tushy</h1>
+            <h1>tushar</h1>
         </div>
         </>
     )

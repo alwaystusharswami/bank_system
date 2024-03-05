@@ -1,2 +1,3 @@
-import Customer from "./Customer";
-export { Customer };
+import CustomerList from "./CustomerList";
+
+export { CustomerList };
