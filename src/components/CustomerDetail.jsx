@@ -1,11 +1,23 @@
-import {useParams} from 'react-router-dom'
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 const CustomerDetail = () => {
-    const {id}=useParams()
-    return (
-        <div>
-            <h1>{id}</h1>
-        </div>
-    )
-}
+  const { id } = useParams();
+  const [customer, setCustomer] = useState({});
+  useEffect(() => {
+    async function showCustomer() {
+      const response = await fetch(`http://localhost:8000/customer/${id}`);
+      const data = await response.json();
+      setCustomer(data);
+    }
+    showCustomer();
+  });
+  return (
+    <div>
+      <h1>{customer.name}</h1>
+      <p>{customer.email}</p>
+      <h3> Amount : {customer.currentBalance} </h3>
+    </div>
+  );
+};
 
-export default CustomerDetail
+export default CustomerDetail;
