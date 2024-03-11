@@ -19,11 +19,11 @@ const CustomerList = () => {
   }
 
   return (
-    <div>
-      {customer.map((user) => (
-        <Customer user={user} key={user.id}/>
-      ))}
-    </div>
+    <>
+      {customer.length > 0 &&
+        customer.map((user) => <Customer user={user} key={user.id} />)}
+      
+    </>
   );
 };
 
