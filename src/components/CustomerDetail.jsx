@@ -12,20 +12,39 @@ const CustomerDetail = () => {
     showCustomer();
   });
   return (
-    <>
-      <h1>{customer.name}</h1>
-      <p>{customer.email}</p>
-      <h3> Amount : {customer.currentBalance} </h3>
-      <button>Transfer Amount</button>
+    <section className="m-5">
+      <h1 className="text-3xl">
+        Name : <span className="font-bold">{customer.name}</span>
+      </h1>
+      <p className="text-3xl">Email : {customer.email}</p>
+      <h3 className="text-3xl">
+        {" "}
+        Amount : <span className="font-bold">
+          {" "}
+          {customer.currentBalance}{" "}
+        </span>{" "}
+      </h3>
+      <h1 className="text-3xl font-bold italic my-5">Transfer Amount</h1>
       <div>
-        <form>
-          <input type="text" placeholder="receiver name" />
-          <input type="text" placeholder="enter amount" />
-          <button type="submit">Send</button>
-
+        <form className="flex flex-col items-start">
+          <input
+            className="placeholder:font-bold my-2 p-2 placeholder:text-gray-600"
+            type="text"
+            name="nameR"
+            id="nameR"
+            placeholder="receiver name"
+          />
+          <input
+            className="placeholder:font-bold my-2 p-2 placeholder:text-gray-600"
+            type="text"
+            name="amount"
+            id="amount"
+            placeholder="amount"
+          />{" "}
+          <button type="submit" className="bg-fuchsia-700 text-white py-2 px-4 rounded">Send</button>
         </form>
       </div>
-    </>
+    </section>
   );
 };
 

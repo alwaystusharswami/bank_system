@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 const Customer = ({ user }) => {
   return (
     <>
-      <>
-        <h1>
-          <Link to={`/customer/${user._id}`}>{user.name}</Link>
-        </h1>
-      </>
+        <li className="text-4xl">
+      
+        <Link to={`customer/${user._id}`}>{user.name}</Link>
+        </li>
+
+    
     </>
   );
 };

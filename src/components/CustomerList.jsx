@@ -20,8 +20,11 @@ const CustomerList = () => {
 
   return (
     <>
-      {customer.length > 0 &&
-        customer.map((user) => <Customer user={user} key={user.id} />)}
+      <ul className="flex flex-col">
+        {customer.length > 0 &&
+          customer.map((user) => <Customer user={user} key={user.id} />)}
+        <br></br>
+      </ul>
     </>
   );
 };
