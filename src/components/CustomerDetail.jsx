@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 const CustomerDetail = () => {
   const { id } = useParams();
@@ -12,12 +12,20 @@ const CustomerDetail = () => {
     showCustomer();
   });
   return (
-    <div>
+    <>
       <h1>{customer.name}</h1>
       <p>{customer.email}</p>
       <h3> Amount : {customer.currentBalance} </h3>
-      <p><Link>Send Money</Link></p>
-    </div>
+      <button>Transfer Amount</button>
+      <div>
+        <form>
+          <input type="text" placeholder="receiver name" />
+          <input type="text" placeholder="enter amount" />
+          <button type="submit">Send</button>
+
+        </form>
+      </div>
+    </>
   );
 };
 
