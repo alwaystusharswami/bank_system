@@ -1,12 +1,9 @@
-import { Link } from "react-router-dom";
+import { CustomerList } from "../components";
 
 const Home = () => {
   return (
-    <div>
-      <h1><Link to={'viewCustomer'}>View Customer</Link></h1>
-      <h1>
-        <Link to={"transferMoneyPage"}>Transfer Money</Link>
-      </h1>
+    <div className="text-2xl p-5">
+      <CustomerList />
     </div>
   );
 };

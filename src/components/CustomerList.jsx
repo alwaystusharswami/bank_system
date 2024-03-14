@@ -22,7 +22,6 @@ const CustomerList = () => {
     <>
       {customer.length > 0 &&
         customer.map((user) => <Customer user={user} key={user.id} />)}
-      
     </>
   );
 };

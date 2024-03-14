@@ -5,7 +5,7 @@ const Customer = ({ user }) => {
     <>
       <>
         <h1>
-          <Link to={`customer/${user._id}`}>{user.name}</Link>
+          <Link to={`/customer/${user._id}`}>{user.name}</Link>
         </h1>
       </>
     </>
