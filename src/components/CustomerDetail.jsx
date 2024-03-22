@@ -1,9 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 const CustomerDetail = () => {
   const { id } = useParams();
+  const navigation = useNavigate();
   const [allCustomer, setAllCustomer] = useState([]);
   const [input, setInput] = useState("");
+  const [amount, setAmount] = useState("");
   const [customer, setCustomer] = useState({});
   useEffect(() => {
     async function showCustomer() {
@@ -41,6 +43,24 @@ const CustomerDetail = () => {
       list.style.display = "none";
     }
   }
+  async function handleSubmit() {
+    const response = await fetch("http://localhost:8000/transfer", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        input: input,
+        amount: amount,
+        user: customer.name,
+      }),
+    });
+    const data = await response.json();
+    if (data.ok) {
+      navigation("/");
+    }
+  }
   return (
     <section className="m-5">
       <h1 className="text-3xl">
@@ -56,7 +76,7 @@ const CustomerDetail = () => {
       </h3>
       <h1 className="text-3xl font-bold italic my-5">Transfer Amount</h1>
       <div>
-        <form className="flex flex-col items-start">
+        <form className="flex flex-col items-start" onSubmit={handleSubmit}>
           <input
             className="placeholder:font-bold my-2 p-2 placeholder:text-gray-600"
             type="text"
@@ -73,6 +93,8 @@ const CustomerDetail = () => {
             name="amount"
             id="amount"
             placeholder="amount"
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
           />{" "}
           <button
             type="submit"
