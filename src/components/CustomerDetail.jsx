@@ -2,6 +2,8 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 const CustomerDetail = () => {
   const { id } = useParams();
+  const [allCustomer, setAllCustomer] = useState([]);
+  const [input, setInput] = useState("");
   const [customer, setCustomer] = useState({});
   useEffect(() => {
     async function showCustomer() {
@@ -11,6 +13,34 @@ const CustomerDetail = () => {
     }
     showCustomer();
   });
+  useEffect(() => {
+    async function customerData() {
+      const res = await fetch("http://localhost:8000/allCustomer");
+      const data = await res.json();
+      setAllCustomer(data);
+    }
+    customerData();
+  }, [input]);
+  function handleChange(e) {
+    setInput(e.target.value);
+    const value = document.querySelector("#nameR").value;
+    const list = document.querySelector("#list");
+    if (value.length >= 1) {
+      list.style.display = "block";
+      list.innerHTML = "";
+      allCustomer.forEach((i) => {
+        const li = document.createElement("li");
+        li.innerText = i.name;
+        li.addEventListener("click", function () {
+          setInput(li.innerHTML);
+          list.style.display = "none";
+        });
+        list.appendChild(li);
+      });
+    } else {
+      list.style.display = "none";
+    }
+  }
   return (
     <section className="m-5">
       <h1 className="text-3xl">
@@ -33,7 +63,10 @@ const CustomerDetail = () => {
             name="nameR"
             id="nameR"
             placeholder="receiver name"
+            value={input}
+            onChange={handleChange}
           />
+          <ul id="list"></ul>
           <input
             className="placeholder:font-bold my-2 p-2 placeholder:text-gray-600"
             type="text"
@@ -41,7 +74,12 @@ const CustomerDetail = () => {
             id="amount"
             placeholder="amount"
           />{" "}
-          <button type="submit" className="bg-fuchsia-700 text-white py-2 px-4 rounded">Send</button>
+          <button
+            type="submit"
+            className="bg-fuchsia-700 text-white py-2 px-4 rounded"
+          >
+            Send
+          </button>
         </form>
       </div>
     </section>
