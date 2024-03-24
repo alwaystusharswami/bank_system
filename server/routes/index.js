@@ -1,13 +1,9 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import {
-  allCustomer,
-  customerDetail,
-  transfer,
-} from "../controllers/customer.js";
+const customer = require("../controllers/customer");
 router
-  .get("/allCustomer", allCustomer)
-  .get("/customer/:id", customerDetail)
-  .post("/transfer", transfer);
+  .get("/allCustomer", customer.allCustomer)
+  .get("/customer/:id", customer.customerDetail)
+  .post("/transfer", customer.transfer);
 
-export { router };
+module.exports = router;

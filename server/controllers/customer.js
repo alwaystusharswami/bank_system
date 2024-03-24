@@ -1,14 +1,14 @@
-import { User } from "../model/user.model.js";
+const User = require("../model/user.model.js");
 
-async function allCustomer(req, res) {
+module.exports.allCustomer = async function (req, res) {
   const user = await User.find();
   return res.json(user);
-}
-async function customerDetail(req, res) {
+};
+module.exports.customerDetail = async function (req, res) {
   const user = await User.findById(req.params.id);
   return res.status(200).json(user);
-}
-async function transfer(req, res) {
+};
+module.exports.transfer = async function (req, res) {
   const amount = +req.body.amount;
   const sender = await User.findOne({ name: req.body.user });
   sender.currentBalance = sender.currentBalance - amount;
@@ -17,5 +17,4 @@ async function transfer(req, res) {
   receiver.currentBalance = receiver.currentBalance + amount;
   receiver.save();
   return res.status(200).json({ message: "done" });
-}
-export { customerDetail, allCustomer, transfer };
+};
