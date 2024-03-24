@@ -43,7 +43,8 @@ const CustomerDetail = () => {
       list.style.display = "none";
     }
   }
-  async function handleSubmit() {
+  async function handleSubmit(e) {
+    e.preventDefault();
     const response = await fetch("http://localhost:8000/transfer", {
       method: "POST",
       headers: {
@@ -85,14 +86,18 @@ const CustomerDetail = () => {
             placeholder="receiver name"
             value={input}
             onChange={handleChange}
+            autoComplete="off"
+            required
           />
           <ul id="list"></ul>
           <input
             className="placeholder:font-bold my-2 p-2 placeholder:text-gray-600"
             type="text"
+            required
             name="amount"
             id="amount"
             placeholder="amount"
+            autoComplete="off"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
           />{" "}
