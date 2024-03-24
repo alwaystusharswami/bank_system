@@ -7,4 +7,3 @@ async function main() {
   );
   console.log("mongoose connected");
 }
-module.exports = mongoose;
