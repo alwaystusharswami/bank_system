@@ -9,7 +9,9 @@ const CustomerDetail = () => {
   const [customer, setCustomer] = useState({});
   useEffect(() => {
     async function showCustomer() {
-      const response = await fetch(`http://localhost:8000/customer/${id}`);
+      const response = await fetch(
+        `http://localhost:8000/customer/customer/${id}`
+      );
       const data = await response.json();
       setCustomer(data);
     }
@@ -17,7 +19,7 @@ const CustomerDetail = () => {
   });
   useEffect(() => {
     async function customerData() {
-      const res = await fetch("http://localhost:8000/allCustomer");
+      const res = await fetch("http://localhost:8000/customer/allCustomer");
       const data = await res.json();
       setAllCustomer(data);
     }
@@ -45,7 +47,7 @@ const CustomerDetail = () => {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await fetch("http://localhost:8000/transfer", {
+    const response = await fetch("http://localhost:8000/customer/transfer", {
       method: "POST",
       headers: {
         Accept: "application/json",

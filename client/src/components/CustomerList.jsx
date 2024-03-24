@@ -7,7 +7,7 @@ const CustomerList = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function customerData() {
-      const res = await fetch("http://localhost:8000/allCustomer");
+      const res = await fetch("http://localhost:8000/customer/allCustomer");
       const data = await res.json();
       setCustomer(data);
       setLoading(false);

@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const customer = require("../controllers/customer");
 router
-  .get("/allCustomer", customer.allCustomer)
-  .get("/customer/:id", customer.customerDetail)
-  .post("/transfer", customer.transfer);
+  .get("/", (req, res) => {
+    return res.send(`this is an api url`);
+  })
+  .use("/customer", require("./customer"));
 
 module.exports = router;
